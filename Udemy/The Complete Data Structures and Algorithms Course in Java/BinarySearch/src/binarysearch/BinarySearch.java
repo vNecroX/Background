@@ -5,7 +5,7 @@ package binarysearch;
  * @author vNecroX
  */
 public class BinarySearch {
-    int arr[] = {1, 3, 5, 8, 12, 34, 35};
+    int[] arr = {1, 3, 5, 8, 12, 34, 35};
 
     public static void main(String[] args) {
         BinarySearch bS = new BinarySearch();

@@ -5,7 +5,7 @@ package movezeroes;
  * @author vNecroX
  */
 public class MoveZeroes {
-    int nums[] = {0, 1, 0, 3, 4};
+    int[] nums = {0, 1, 0, 3, 4};
     
     public static void main(String[] args) {
         MoveZeroes mZ = new MoveZeroes();
