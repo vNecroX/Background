@@ -1,0 +1,28 @@
+# Use an official PHP runtime as a parent image
+FROM php:8.1-apache
+
+# Install required tools and dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install additional packages
+RUN apt-get update && apt-get install -y \
+    nano
+
+# Install Redis extension
+RUN pecl install -o -f redis \
+    && rm -rf /tmp/pear \
+    && docker-php-ext-enable redis
+
+# Install Redis server
+RUN apt-get update && \
+    apt-get install -y redis-server && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy the application files into the container
+COPY . /var/www/html
+
+# Start Apache and Redis server
+CMD service redis-server start && apache2-foreground

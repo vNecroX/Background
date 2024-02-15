@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+      
+  web:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - redis
+    command: php -S 0.0.0.0:80 -t /var/www/html
+    volumes:
+      - .:/var/www/html
+
+  redis-web:
+    image: docker.io/necrox/redis-web:latest
+    depends_on:
+      - redis
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_USERNAME=necrox
+      - WATCHTOWER_PASSWORD=thisishaloreach4
+    command: --debug
+    depends_on:
+      - web
