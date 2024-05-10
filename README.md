@@ -1,1 +1,1 @@
-# Own developer background.
+# My developing background.
