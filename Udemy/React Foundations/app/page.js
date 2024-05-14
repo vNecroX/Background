@@ -19,3 +19,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+//Use npm run dev to run the project

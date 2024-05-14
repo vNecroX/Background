@@ -1,0 +1,3 @@
+[submodule "ReduxTutorial"]
+	path = ReduxTutorial
+	url = https://github.com/vNecroX/ReduxTutorial.git
