@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "src/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "expo/tsconfig.base"
+}
