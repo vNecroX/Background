@@ -1,1 +1,1 @@
-# My developing background through diverse areas.
+# My personal developing background through diverse areas.
