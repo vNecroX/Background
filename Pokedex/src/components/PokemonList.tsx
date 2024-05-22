@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {View, Text} from 'react-native'
 import {PokemonClient} from 'pokenode-ts'
 import {useAppDispatch, useAppSelector} from "../app/hooks";
-import { setPokemon } from "../features/pokemon/pokemonSlice";
+import {setPokemon} from "../features/pokemon/pokemonSlice";
 import {
   increment,
   decrement,
@@ -11,6 +11,7 @@ import {
   reset
 } from "../features/counter/counterSlice";
 import Pokemon, {Stats} from "../models/Pokemon";
+import {Colors} from "../colors";
 
 const PokemonList = () => {
   const dispatch = useAppDispatch();
@@ -40,7 +41,12 @@ const PokemonList = () => {
             weight: pokemon.weight,
             type: pokemon?.types[0]?.type?.name?.toString(),
             move: pokemon?.moves[0]?.move?.move?.toString(),
-            stats: currentPokemonStats
+            stats: currentPokemonStats,
+            color: pokemon?.types[0]?.type?.name?.toString() === 'grass'
+              ? Colors.grass 
+              : pokemon?.types[0]?.type?.name?.toString() === 'fire'
+              ? Colors.fire
+              : Colors.unknown
           };
 
           dispatch(setPokemon(newPokemon));
@@ -70,7 +76,7 @@ const PokemonList = () => {
   };
   
   return (
-    <View>
+    <View style = {{backgroundColor: currentPokemon.color, height: '100%'}}>
       <Text>{currentPokemon.name}</Text>
     </View>
   );

@@ -12,10 +12,10 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from "./src/app/store";
-import { StatusBar } from 'expo-status-bar';
 import PokemonList from './src/components/PokemonList';
 
 function App(): React.JSX.Element {
@@ -24,8 +24,8 @@ function App(): React.JSX.Element {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.safeArea}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <View style={styles.container}>
-          <StatusBar style="auto" />
           <PokemonList />
         </View>
       </SafeAreaView>
@@ -36,12 +36,11 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
+    //paddingTop: StatusBar.currentHeight || 0, // Add padding top to safe area
   },
   container: {
-    flex: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1
   },
 });
 

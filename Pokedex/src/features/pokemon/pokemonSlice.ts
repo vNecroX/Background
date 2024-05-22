@@ -17,6 +17,7 @@ const initialState: Pokemon = {
         specialDefense: 0,
         speed: 0,
     },
+    color: 'white'
 };
 
 const pokemonSlice = createSlice({
@@ -32,6 +33,7 @@ const pokemonSlice = createSlice({
             state.type = action.payload.type;
             state.move = action.payload.move;
             state.stats = action.payload.stats;
+            state.color = action.payload.color;
         },
     },
 });
