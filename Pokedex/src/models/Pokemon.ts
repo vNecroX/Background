@@ -53,6 +53,6 @@ export class Stats {
         this.defense = defense;
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
-        this.speed = speed
+        this.speed = speed;
     }
 }
