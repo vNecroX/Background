@@ -1,3 +1,6 @@
 [submodule "ReduxTutorial"]
 	path = ReduxTutorial
 	url = https://github.com/vNecroX/ReduxTutorial.git
+[submodule "nextjs-dashboard"]
+	path = nextjs-dashboard
+	url = https://github.com/vNecroX/nextjs-dashboard.git
