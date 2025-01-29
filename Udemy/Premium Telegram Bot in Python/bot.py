@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import boto3
 import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
@@ -8,12 +9,30 @@ import responses
 import nest_asyncio
 import asyncio
 
-# Apply nest_asyncio before any async code
 nest_asyncio.apply()
 
-# Load environment variables from the .env file
 load_dotenv()
-API_KEY = os.getenv('API_KEY')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
+
+# Initialize a session using Amazon S3
+ssm_client = boto3.client('ssm', 
+                          aws_access_key_id=AWS_ACCESS_KEY_ID,
+                          aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                          region_name=AWS_DEFAULT_REGION)
+
+# Retrieve the key parameter value
+def get_api_key():
+    response = ssm_client.get_parameter(
+        Name='/telegram-bot-lat/api-key',
+        WithDecryption=True
+    )
+    return response['Parameter']['Value']
+
+# Use the API key
+API_KEY = get_api_key()
+print(f"API_KEY: {API_KEY}")
 
 # Setup the logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s\n', level=logging.INFO)
